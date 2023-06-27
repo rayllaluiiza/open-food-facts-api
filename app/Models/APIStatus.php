@@ -10,6 +10,8 @@ class APIStatus extends Model
     use HasFactory;
 
     public $timestamps = false;
+    
+    protected $table = 'api_status';
 
     protected $fillable = [
         'status', 'memoryConsumed', 'date'
