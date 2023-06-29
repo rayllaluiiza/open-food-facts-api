@@ -30,7 +30,7 @@ return new class extends Migration
             $table->longText('ingredients_text')->nullable();
             $table->string('traces', 255)->nullable();
             $table->string('serving_size', 60)->nullable();
-            $table->float('serving_quantity', 8, 2)->nullable();
+            $table->integer('serving_quantity')->nullable();
             $table->integer('nutriscore_score')->nullable();
             $table->string('nutriscore_grade', 1)->nullable();
             $table->string('main_category', 50)->nullable();
