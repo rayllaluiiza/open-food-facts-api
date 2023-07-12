@@ -14,9 +14,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::simplePaginate(15);
+        $product = Product::simplePaginate(20);
+        $data = $product->toArray();
 
-        return $product;
+        return $data['data'];
     }
 
     /**

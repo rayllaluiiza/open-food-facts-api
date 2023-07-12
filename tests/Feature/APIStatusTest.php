@@ -17,14 +17,14 @@ class APIStatusTest extends TestCase
      */
     public function test_if_can_user_list_all_api_status(): void
     {
-        $ApiStatus = APIStatus::factory(3)->create();
+        $apiStatus = APIStatus::factory(3)->create();
 
         $response = $this->getJson('/api/status');
 
         $response->assertJsonCount(3);
         $response->assertStatus(200);
 
-        $response->assertJson(function (AssertableJson $json) use($ApiStatus){
+        $response->assertJson(function (AssertableJson $json) use($apiStatus){
             $json->hasAll(['0.id', '0.status', '0.memoryConsumed', '0.date']);
 
             $json->whereAllType([
@@ -35,10 +35,10 @@ class APIStatusTest extends TestCase
             ]);
 
             $json->whereAll([
-                '0.id' => $ApiStatus[0]->id,
-                '0.status' => $ApiStatus[0]->status,
-                '0.memoryConsumed' => $ApiStatus[0]->memoryConsumed,
-                '0.date' => $ApiStatus[0]->date,
+                '0.id' => $apiStatus[0]->id,
+                '0.status' => $apiStatus[0]->status,
+                '0.memoryConsumed' => $apiStatus[0]->memoryConsumed,
+                '0.date' => $apiStatus[0]->date,
             ]);
         });
     }
