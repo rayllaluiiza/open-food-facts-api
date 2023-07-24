@@ -1,0 +1,116 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Open Food Facts API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api"
+        }
+    ],
+    "paths": {
+        "/status": {
+            "get": {
+                "tags": [
+                    "/status"
+                ],
+                "summary": "Display a listing of the resource",
+                "description": "Get all status on database",
+                "operationId": "5e01603cffcb85640997089cfec54763",
+                "responses": {
+                    "200": {
+                        "description": "List of status"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/produtos": {
+            "get": {
+                "tags": [
+                    "/produtos"
+                ],
+                "summary": "Display a listing of the resource and paginate then",
+                "description": "Get all products on database",
+                "operationId": "06ec4c54910f9c241e8c22e51f6e3042",
+                "responses": {
+                    "200": {
+                        "description": "List of products"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/produtos/{id}": {
+            "get": {
+                "tags": [
+                    "/produtos"
+                ],
+                "summary": "Display only one product",
+                "description": "Get a product from the database",
+                "operationId": "475cb0b7b065fb84b474c06cbdf13a78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show a product"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "/produtos"
+                ],
+                "summary": "Change the product status",
+                "description": "Change the product status to 'trash'",
+                "operationId": "7f151ffdaca32da6bbe069b43680be74",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Change the product status"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    }
+}
