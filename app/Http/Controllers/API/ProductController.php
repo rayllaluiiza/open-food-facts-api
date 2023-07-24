@@ -10,7 +10,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *      tags={"/produtos"},
+     *      summary="Display a listing of the resource and paginate then",
+     *      description="Get all products on database",
+     *      path="/produtos",
+     *      security={{"bearerAuth": {}}},
+     *      @OA\Response(
+     *          response="200", description="List of products"
+     *      )
+     * )
      */
     public function index()
     {
@@ -21,7 +30,26 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *      tags={"/produtos"},
+     *      summary="Display only one product",
+     *      description="Get a product from the database",
+     *      path="/produtos/{id}",
+     *      security={{"bearerAuth": {}}},
+     *      @OA\Parameter(
+     *          description="Product id",
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="integer",
+     *              format="int64"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="200", description="Show a product"
+     *      )
+     * )
      */
     public function show(string $id)
     {
@@ -53,7 +81,26 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *      tags={"/produtos"},
+     *      summary="Change the product status",
+     *      description="Change the product status to 'trash'",
+     *      path="/produtos/{id}",
+     *      security={{"bearerAuth": {}}},
+     *      @OA\Parameter(
+     *          description="Product id",
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="integer",
+     *              format="int64"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="204", description="Change the product status"
+     *      )
+     * )
      */
     public function destroy(string $id)
     {
