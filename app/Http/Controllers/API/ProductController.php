@@ -64,7 +64,50 @@ class ProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *      tags={"/produtos"},
+     *      summary="Update a product",
+     *      description="Update a product on database",
+     *      path="/produtos/{id}",
+     *      security={{"bearerAuth": {}}},
+     *      @OA\Parameter(
+     *          description="Product id",
+     *          in="path",
+     *          name="id",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="integer",
+     *              format="int64"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(property="status", type="string"),
+     *              @OA\Property(property="url", type="string"),
+     *              @OA\Property(property="product_name", type="string"),
+     *              @OA\Property(property="quantity", type="string"),
+     *              @OA\Property(property="brands", type="string"),
+     *              @OA\Property(property="categories", type="string"),
+     *              @OA\Property(property="labels", type="string"),
+     *              @OA\Property(property="cities", type="string"),
+     *              @OA\Property(property="purchase_places", type="string"),
+     *              @OA\Property(property="stores", type="string"),
+     *              @OA\Property(property="ingredients_text", type="string"),
+     *              @OA\Property(property="traces", type="string"),
+     *              @OA\Property(property="serving_size", type="string"),
+     *              @OA\Property(property="serving_quantity", type="integer"),
+     *              @OA\Property(property="nutriscore_score", type="integer"),
+     *              @OA\Property(property="nutriscore_grade", type="string"),
+     *              @OA\Property(property="main_category", type="string"),
+     *              @OA\Property(property="image_url", type="string"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="200", description="Update a product"
+     *      )
+     * )
      */
     public function update(Request $request, string $id)
     {

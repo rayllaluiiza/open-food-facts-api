@@ -81,6 +81,99 @@
                     }
                 ]
             },
+            "put": {
+                "tags": [
+                    "/produtos"
+                ],
+                "summary": "Update a product",
+                "description": "Update a product on database",
+                "operationId": "3b1d0153f7f031da88cc6e3e2f690e61",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "product_name": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "string"
+                                    },
+                                    "brands": {
+                                        "type": "string"
+                                    },
+                                    "categories": {
+                                        "type": "string"
+                                    },
+                                    "labels": {
+                                        "type": "string"
+                                    },
+                                    "cities": {
+                                        "type": "string"
+                                    },
+                                    "purchase_places": {
+                                        "type": "string"
+                                    },
+                                    "stores": {
+                                        "type": "string"
+                                    },
+                                    "ingredients_text": {
+                                        "type": "string"
+                                    },
+                                    "traces": {
+                                        "type": "string"
+                                    },
+                                    "serving_size": {
+                                        "type": "string"
+                                    },
+                                    "serving_quantity": {
+                                        "type": "integer"
+                                    },
+                                    "nutriscore_score": {
+                                        "type": "integer"
+                                    },
+                                    "nutriscore_grade": {
+                                        "type": "string"
+                                    },
+                                    "main_category": {
+                                        "type": "string"
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update a product"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "/produtos"
