@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\API\APIStatusController;
-use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\{APIStatusController, ProductController, UserController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::post('/token', [UserController::class, 'authenticate']);
+//Route::post('/user', [UserController::class, 'store']);
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::get('status', [APIStatusController::class, 'index']);
-Route::apiResource('produtos', ProductController::class)->except('store');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('status', [APIStatusController::class, 'index']);
+    Route::apiResource('produtos', ProductController::class)->except('store');
+});
