@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/token', [UserController::class, 'authenticate']);
-//Route::post('/user', [UserController::class, 'store']);
+Route::post('/user', [UserController::class, 'store']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('status', [APIStatusController::class, 'index']);
