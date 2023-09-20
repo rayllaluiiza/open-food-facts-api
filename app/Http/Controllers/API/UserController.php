@@ -4,14 +4,13 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthFormRequest;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    public function authenticate(Request $request)
+    public function authenticate(AuthFormRequest $request)
     {
         $user = User::where('email', $request->email)->first();
 
